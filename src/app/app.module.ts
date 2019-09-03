@@ -4,15 +4,21 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CustomMaterialModule } from './custom-material/custom-material.module';
+import { LoveLetterComponent } from './loveletter/loveletter.component';
+import { MarkdownPipe } from './markdown.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    LoveLetterComponent,
+    MarkdownPipe
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    CustomMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
