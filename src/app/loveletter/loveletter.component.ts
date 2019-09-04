@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LoveletterService } from '../service/loveletter.service';
-import { Rule } from '../model/rule/rule';
+import { Card } from '../model/card';
+import { Rule } from '../model/rule';
+import { Utils } from '../utils';
 
 @Component({
   selector: 'app-loveletter',
@@ -9,23 +11,18 @@ import { Rule } from '../model/rule/rule';
 })
 export class LoveLetterComponent implements OnInit {
   rule: Rule;
+  deck: Card[];
 
   constructor(private loveLetterService: LoveletterService) { }
 
   ngOnInit() {
     this.loveLetterService.getRules().subscribe((rule: Rule) => {
-      rule.proceedings = this.markdown(rule.proceedings);
       this.rule = rule;
     });
-  }
 
-  private markdown(lines: string[]): string[] {
-    const ret: string[] = [];
-    for (const line of lines) {
-      const parsed = line.replace(/\*\*(\S(.*?\S)?)\*\*/gm, '<strong>$1</strong>');
-      ret.push(parsed);
-    }
-
-    return ret;
+    this.loveLetterService.getDeck().subscribe((deck: Card[]) => {
+      Utils.shuffle(deck);
+      this.deck = deck;
+    });
   }
 }

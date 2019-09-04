@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Rule } from '../model/rule/rule';
+import { Rule } from '../model/rule';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Card } from '../model/card';
 
 @Injectable({
   providedIn: 'root'
@@ -13,5 +14,9 @@ export class LoveletterService {
 
   public getRules(): Observable<Rule> {
     return this.http.get<Rule>(this.url + '/rules');
+  }
+
+  public getDeck(): Observable<Card[]> {
+    return this.http.get<Card[]>(this.url + '/deck');
   }
 }

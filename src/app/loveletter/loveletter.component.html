@@ -2,8 +2,17 @@
   <p>Nombre de joueurs :<br />{{ rule.playerAmout }}</p>
   <p>Liste des cartes :<br />{{ rule.cardList }}</p>
 
-  <p>Présentation du jeu :<span *ngFor="let line of rule.presentation"><br />{{ line }}</span></p>
-  <p>Règles du jeu :<span *ngFor="let line of rule.proceedings">
-    <br /><span>{{ line | markdown }}</span>
-  </span></p>
+  <p>
+    Présentation du jeu :
+    <span *ngFor="let line of rule.presentation">
+      <br /><span [innerHTML]="line | markdown"></span>
+    </span>
+  </p>
+
+  <p>
+    Règles du jeu :
+    <span *ngFor="let line of rule.proceedings">
+      <br /><span [innerHTML]="line | markdown"></span>
+    </span>
+  </p>
 </div>
