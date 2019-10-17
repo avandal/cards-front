@@ -1,13 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomMaterialModule } from './custom-material/custom-material.module';
 import { LoveLetterComponent } from './loveletter/loveletter.component';
-import { MarkdownPipe } from './markdown.pipe';
+import { MarkdownPipe } from './pipes/markdown.pipe';
 import { DashboardComponent } from './loveletter/dashboard/dashboard.component';
+import { LoginComponent } from './auth/login/login.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -15,12 +16,14 @@ import { DashboardComponent } from './loveletter/dashboard/dashboard.component';
     HomeComponent,
     LoveLetterComponent,
     MarkdownPipe,
-    DashboardComponent
+    DashboardComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    CustomMaterialModule
+    CustomMaterialModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
